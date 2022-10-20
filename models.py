@@ -76,7 +76,7 @@ class Tag(db.Model):
   name = db.Column(db.Text,
                     unique=True)
 
-  posts = db.relationship('Post', backref='tags')
+  posts = db.relationship('Post', secondary='post_tags', backref='tags')
 
 class PostTag(db.Model):
       '''Tags that go on posts'''

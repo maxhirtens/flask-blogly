@@ -2,7 +2,8 @@
 block content %}
 <h1>{{post.title}}</h1>
 <div>
-  <p>Content: {{post.content}}</p>
+  <p>{{post.content}}</p>
+
   <small>Created At: {{post.created_at}}</small>
   <form>
     <button formmethod="GET" formaction="/posts/{{post.id}}/edit">Edit</button>
@@ -10,6 +11,11 @@ block content %}
       Delete
     </button>
   </form>
+  <p>
+    {% if post.tags %} Tags: {% for tag in post.tags %}
+    <a href="/tags/{{tag.id}}">{{tag.name}}</a>
+    {% endfor %} {% endif %}
+  </p>
   <br />
 </div>
 <a href="/">Home</a>

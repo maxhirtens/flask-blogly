@@ -1,0 +1,21 @@
+{% extends 'base.html' %} {%block title%}Blogly - Tag Info{% endblock %} {%
+block content %}
+<h1>Tag</h1>
+<div>
+  <p>{{tag.name}}</p>
+  <form>
+    <button formmethod="GET" formaction="/tags/{{tag.id}}/edit">Edit</button>
+    <button formmethod="POST" formaction="/tags/{{tag.id}}/delete">
+      Delete
+    </button>
+  </form>
+  <br />
+  <p>
+    Associated Posts: {% for post in tag.posts %}
+    <a href="/posts/{{post.id}}">{{post.title}}</a>
+    {% endfor %}
+  </p>
+</div>
+<br />
+<a href="/">Home</a>
+{% endblock %}

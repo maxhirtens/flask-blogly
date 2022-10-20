@@ -8,6 +8,9 @@ db.create_all()
 
 # If table isn't empty, empty it
 User.query.delete()
+Post.query.delete()
+Tag.query.delete()
+PostTag.query.delete()
 
 # Add users
 max = User(first_name='Max', last_name='Hirtenstein')
@@ -30,6 +33,15 @@ pt2 = PostTag(post_id=2, tag_id=1)
 # Add new objects to session, so they'll persist
 db.session.add_all([max, tom, linda])
 db.session.add_all([p1, p2, p3])
+
+# Commit--otherwise, this never gets saved!
+db.session.commit()
+
+db.session.add_all([t1, t2])
+# Commit--otherwise, this never gets saved!
+db.session.commit()
+
+db.session.add_all([pt1, pt2])
 
 # Commit--otherwise, this never gets saved!
 db.session.commit()
