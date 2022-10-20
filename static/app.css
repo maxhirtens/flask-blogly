@@ -1,0 +1,8 @@
+body  {
+  background-color: aquamarine;
+  font-size: 1.25rem;
+}
+
+div > img {
+  max-width: 80px;
+}
